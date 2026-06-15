@@ -58,19 +58,19 @@ function SuppliersPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="font-serif text-3xl font-bold tracking-tight text-ocean-dark">Proveedores</h1>
-          <p className="text-muted-foreground">Gestión de proveedores y contacto</p>
+          <h1 className="font-serif text-2xl font-bold tracking-tight text-ocean-dark sm:text-3xl">Proveedores</h1>
+          <p className="text-sm text-muted-foreground">Gestión de proveedores y contacto</p>
         </div>
-        <Button onClick={openCreate} className="bg-sand-dark hover:bg-sand-dark/90 text-white">
+        <Button onClick={openCreate} className="w-full sm:w-auto bg-sand-dark hover:bg-sand-dark/90 text-white">
           <Plus className="mr-2 h-4 w-4" />
           Nuevo Proveedor
         </Button>
       </div>
 
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-        <DialogContent className="sm:max-w-md">
+        <DialogContent className="mx-4 sm:mx-auto sm:max-w-md">
           <DialogHeader>
             <DialogTitle className="text-ocean-dark">{editing ? 'Editar Proveedor' : 'Nuevo Proveedor'}</DialogTitle>
           </DialogHeader>
@@ -131,7 +131,7 @@ function SuppliersPage() {
         <CardHeader>
           <CardTitle className="text-ocean-dark">Lista de Proveedores ({filtered.length})</CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="overflow-x-auto">
           <Table>
             <TableHeader>
               <TableRow>

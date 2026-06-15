@@ -18,14 +18,12 @@ export const Route = createFileRoute('/admin/products')({
   component: ProductsPage,
 })
 
-const EMOJIS = ['🍋', '🦑', '🐟', '🦐', '🍲', '🐠', '🥩', '🍗', '🫕', '🟡', '🟣', '🍹', '💧', '🍚', '🟤', '🍩']
-
 function ProductsPage() {
   const { items, add, update, remove } = useProducts()
   const [search, setSearch] = useState('')
   const [modalOpen, setModalOpen] = useState(false)
   const [editing, setEditing] = useState<Product | null>(null)
-  const [form, setForm] = useState({ nombre: '', descripcion: '', categoria: 'Del Mar', precio: 0, emoji: '🍋', popular: false, disponible: true })
+  const [form, setForm] = useState({ nombre: '', descripcion: '', categoria: 'Del Mar', precio: 0, popular: false, disponible: true })
 
   const filtered = items.filter((p) =>
     p.nombre.toLowerCase().includes(search.toLowerCase()) ||
@@ -34,13 +32,13 @@ function ProductsPage() {
 
   function openCreate() {
     setEditing(null)
-    setForm({ nombre: '', descripcion: '', categoria: 'Del Mar', precio: 0, emoji: '🍋', popular: false, disponible: true })
+    setForm({ nombre: '', descripcion: '', categoria: 'Del Mar', precio: 0, popular: false, disponible: true })
     setModalOpen(true)
   }
 
   function openEdit(product: Product) {
     setEditing(product)
-    setForm({ nombre: product.nombre, descripcion: product.descripcion, categoria: product.categoria as string, precio: product.precio, emoji: product.emoji, popular: product.popular, disponible: product.disponible })
+    setForm({ nombre: product.nombre, descripcion: product.descripcion, categoria: product.categoria as string, precio: product.precio, popular: product.popular, disponible: product.disponible })
     setModalOpen(true)
   }
 
@@ -60,19 +58,19 @@ function ProductsPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="font-serif text-3xl font-bold tracking-tight text-ocean-dark">Productos</h1>
-          <p className="text-muted-foreground">Gestión de platos y productos del menú</p>
+          <h1 className="font-serif text-2xl font-bold tracking-tight text-ocean-dark sm:text-3xl">Productos</h1>
+          <p className="text-sm text-muted-foreground">Gestión de platos y productos del menú</p>
         </div>
-        <Button onClick={openCreate} className="bg-ocean hover:bg-ocean-mid text-white">
+        <Button onClick={openCreate} className="w-full sm:w-auto bg-ocean hover:bg-ocean-mid text-white">
           <Plus className="mr-2 h-4 w-4" />
           Nuevo Producto
         </Button>
       </div>
 
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-        <DialogContent className="sm:max-w-md">
+        <DialogContent className="mx-4 sm:mx-auto sm:max-w-md">
           <DialogHeader>
             <DialogTitle className="text-ocean-dark">{editing ? 'Editar Producto' : 'Nuevo Producto'}</DialogTitle>
           </DialogHeader>
@@ -105,19 +103,6 @@ function ProductsPage() {
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div className="grid gap-2">
-                <Label>Emoji</Label>
-                <Select value={form.emoji} onValueChange={(v) => v && setForm({ ...form, emoji: v })}>
-                  <SelectTrigger className="w-full">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {EMOJIS.map((e) => (
-                      <SelectItem key={e} value={e}>{e}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
               <div className="grid gap-2">
                 <Label>Disponible</Label>
                 <Select value={form.disponible ? 'si' : 'no'} onValueChange={(v) => setForm({ ...form, disponible: v === 'si' })}>
@@ -159,7 +144,7 @@ function ProductsPage() {
         <CardHeader>
           <CardTitle className="text-ocean-dark">Lista de Productos ({filtered.length})</CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="overflow-x-auto">
           <Table>
             <TableHeader>
               <TableRow>

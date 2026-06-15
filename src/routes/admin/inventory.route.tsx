@@ -66,19 +66,19 @@ function InventoryPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="font-serif text-3xl font-bold tracking-tight text-ocean-dark">Inventario</h1>
-          <p className="text-muted-foreground">Control de movimientos y stock de insumos</p>
+          <h1 className="font-serif text-2xl font-bold tracking-tight text-ocean-dark sm:text-3xl">Inventario</h1>
+          <p className="text-sm text-muted-foreground">Control de movimientos y stock de insumos</p>
         </div>
-        <Button onClick={openCreate} className="bg-coral hover:bg-coral/90 text-white">
+        <Button onClick={openCreate} className="w-full sm:w-auto bg-coral hover:bg-coral/90 text-white">
           <Plus className="mr-2 h-4 w-4" />
           Registrar Movimiento
         </Button>
       </div>
 
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-        <DialogContent className="sm:max-w-md">
+        <DialogContent className="mx-4 sm:mx-auto sm:max-w-md">
           <DialogHeader>
             <DialogTitle className="text-ocean-dark">Nuevo Movimiento</DialogTitle>
           </DialogHeader>
@@ -175,7 +175,7 @@ function InventoryPage() {
             <CardHeader>
               <CardTitle className="text-ocean-dark">Historial ({filtered.length})</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="overflow-x-auto">
               <Table>
                 <TableHeader>
                   <TableRow>
@@ -222,7 +222,7 @@ function InventoryPage() {
             <CardHeader>
               <CardTitle className="text-ocean-dark">Stock de Insumos</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="overflow-x-auto">
               <Table>
                 <TableHeader>
                   <TableRow>

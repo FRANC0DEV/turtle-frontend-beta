@@ -26,10 +26,10 @@ function AdminDashboard() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="font-serif text-3xl font-bold tracking-tight text-ocean-dark">
+        <h1 className="font-serif text-2xl font-bold tracking-tight text-ocean-dark sm:text-3xl">
           Panel de Administración
         </h1>
-        <p className="text-muted-foreground">
+        <p className="text-sm text-muted-foreground">
           Resumen del estado actual del restaurante "Del Mar al Limón"
         </p>
       </div>
