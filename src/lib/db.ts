@@ -4,7 +4,6 @@ export interface Product {
   descripcion: string
   categoria: string
   precio: number
-  emoji: string
   popular: boolean
   disponible: boolean
   createdAt: string
@@ -107,15 +106,15 @@ export function seedInitialData(): void {
   const now = new Date().toISOString()
 
   const products: Product[] = [
-    { id: generateId(), nombre: 'Ceviche Clásico', descripcion: 'Corvina, limón, ají limo, cebolla morada', categoria: 'Del Mar', precio: 35, emoji: '🍋', popular: true, disponible: true, createdAt: now, updatedAt: now },
-    { id: generateId(), nombre: 'Jalea Mixta', descripcion: 'Pescado, calamar, langostino, yuca frita', categoria: 'Del Mar', precio: 42, emoji: '🦑', popular: true, disponible: true, createdAt: now, updatedAt: now },
-    { id: generateId(), nombre: 'Sudado de Corvina', descripcion: 'Corvina en salsa criolla al wok', categoria: 'Del Mar', precio: 45, emoji: '🐟', popular: false, disponible: true, createdAt: now, updatedAt: now },
-    { id: generateId(), nombre: 'Arroz con Mariscos', descripcion: 'Arroz, conchas, langostinos, cilantro', categoria: 'Del Mar', precio: 48, emoji: '🦐', popular: false, disponible: true, createdAt: now, updatedAt: now },
-    { id: generateId(), nombre: 'Lomo Saltado', descripcion: 'Res, tomate, cebolla roja, papas fritas', categoria: 'Criolla', precio: 38, emoji: '🥩', popular: true, disponible: true, createdAt: now, updatedAt: now },
-    { id: generateId(), nombre: 'Ají de Gallina', descripcion: 'Gallina, ají amarillo, pan, nuez', categoria: 'Criolla', precio: 32, emoji: '🍗', popular: false, disponible: true, createdAt: now, updatedAt: now },
-    { id: generateId(), nombre: 'Chicha Morada', descripcion: 'Chicha artesanal de la casa', categoria: 'Bebidas', precio: 8, emoji: '🟣', popular: true, disponible: true, createdAt: now, updatedAt: now },
-    { id: generateId(), nombre: 'Maracuyá Sour', descripcion: 'Maracuyá, limón, pisco, jarabe', categoria: 'Bebidas', precio: 18, emoji: '🍹', popular: false, disponible: true, createdAt: now, updatedAt: now },
-    { id: generateId(), nombre: 'Picarones', descripcion: 'Anillos de zapallo con miel de higo', categoria: 'Postres', precio: 16, emoji: '🍩', popular: false, disponible: true, createdAt: now, updatedAt: now },
+    { id: generateId(), nombre: 'Ceviche Clásico', descripcion: 'Corvina, limón, ají limo, cebolla morada', categoria: 'Del Mar', precio: 35, popular: true, disponible: true, createdAt: now, updatedAt: now },
+    { id: generateId(), nombre: 'Jalea Mixta', descripcion: 'Pescado, calamar, langostino, yuca frita', categoria: 'Del Mar', precio: 42, popular: true, disponible: true, createdAt: now, updatedAt: now },
+    { id: generateId(), nombre: 'Sudado de Corvina', descripcion: 'Corvina en salsa criolla al wok', categoria: 'Del Mar', precio: 45, popular: false, disponible: true, createdAt: now, updatedAt: now },
+    { id: generateId(), nombre: 'Arroz con Mariscos', descripcion: 'Arroz, conchas, langostinos, cilantro', categoria: 'Del Mar', precio: 48, popular: false, disponible: true, createdAt: now, updatedAt: now },
+    { id: generateId(), nombre: 'Lomo Saltado', descripcion: 'Res, tomate, cebolla roja, papas fritas', categoria: 'Criolla', precio: 38, popular: true, disponible: true, createdAt: now, updatedAt: now },
+    { id: generateId(), nombre: 'Ají de Gallina', descripcion: 'Gallina, ají amarillo, pan, nuez', categoria: 'Criolla', precio: 32, popular: false, disponible: true, createdAt: now, updatedAt: now },
+    { id: generateId(), nombre: 'Chicha Morada', descripcion: 'Chicha artesanal de la casa', categoria: 'Bebidas', precio: 8, popular: true, disponible: true, createdAt: now, updatedAt: now },
+    { id: generateId(), nombre: 'Maracuyá Sour', descripcion: 'Maracuyá, limón, pisco, jarabe', categoria: 'Bebidas', precio: 18, popular: false, disponible: true, createdAt: now, updatedAt: now },
+    { id: generateId(), nombre: 'Picarones', descripcion: 'Anillos de zapallo con miel de higo', categoria: 'Postres', precio: 16, popular: false, disponible: true, createdAt: now, updatedAt: now },
   ]
 
   const supplies: Supply[] = [

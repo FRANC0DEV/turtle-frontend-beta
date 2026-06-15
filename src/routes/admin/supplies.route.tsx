@@ -60,19 +60,19 @@ function SuppliesPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="font-serif text-3xl font-bold tracking-tight text-ocean-dark">Insumos</h1>
-          <p className="text-muted-foreground">Control de ingredientes y materias primas</p>
+          <h1 className="font-serif text-2xl font-bold tracking-tight text-ocean-dark sm:text-3xl">Insumos</h1>
+          <p className="text-sm text-muted-foreground">Control de ingredientes y materias primas</p>
         </div>
-        <Button onClick={openCreate} className="bg-lime hover:bg-lime/90 text-white">
+        <Button onClick={openCreate} className="w-full sm:w-auto bg-lime hover:bg-lime/90 text-white">
           <Plus className="mr-2 h-4 w-4" />
           Nuevo Insumo
         </Button>
       </div>
 
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-        <DialogContent className="sm:max-w-md">
+        <DialogContent className="mx-4 sm:mx-auto sm:max-w-md">
           <DialogHeader>
             <DialogTitle className="text-ocean-dark">{editing ? 'Editar Insumo' : 'Nuevo Insumo'}</DialogTitle>
           </DialogHeader>
@@ -142,7 +142,7 @@ function SuppliesPage() {
         <CardHeader>
           <CardTitle className="text-ocean-dark">Lista de Insumos ({filtered.length})</CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="overflow-x-auto">
           <Table>
             <TableHeader>
               <TableRow>

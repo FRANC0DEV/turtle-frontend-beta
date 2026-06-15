@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteRouteImport } from './routes/index.route'
+import { Route as MenuIndexRouteRouteImport } from './routes/menu/index.route'
 import { Route as AdminIndexRouteRouteImport } from './routes/admin/index.route'
 import { Route as AdminSuppliesRouteRouteImport } from './routes/admin/supplies.route'
 import { Route as AdminSuppliersRouteRouteImport } from './routes/admin/suppliers.route'
@@ -19,6 +20,11 @@ import { Route as AdminInventoryRouteRouteImport } from './routes/admin/inventor
 const IndexRouteRoute = IndexRouteRouteImport.update({
   id: '/',
   path: '',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MenuIndexRouteRoute = MenuIndexRouteRouteImport.update({
+  id: '/menu/',
+  path: '/menu',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminIndexRouteRoute = AdminIndexRouteRouteImport.update({
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/admin/suppliers': typeof AdminSuppliersRouteRoute
   '/admin/supplies': typeof AdminSuppliesRouteRoute
   '/admin/': typeof AdminIndexRouteRoute
+  '/menu/': typeof MenuIndexRouteRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRouteRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/admin/suppliers': typeof AdminSuppliersRouteRoute
   '/admin/supplies': typeof AdminSuppliesRouteRoute
   '/admin': typeof AdminIndexRouteRoute
+  '/menu': typeof MenuIndexRouteRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,6 +79,7 @@ export interface FileRoutesById {
   '/admin/suppliers': typeof AdminSuppliersRouteRoute
   '/admin/supplies': typeof AdminSuppliesRouteRoute
   '/admin/': typeof AdminIndexRouteRoute
+  '/menu/': typeof MenuIndexRouteRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,6 +90,7 @@ export interface FileRouteTypes {
     | '/admin/suppliers'
     | '/admin/supplies'
     | '/admin/'
+    | '/menu/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -89,6 +99,7 @@ export interface FileRouteTypes {
     | '/admin/suppliers'
     | '/admin/supplies'
     | '/admin'
+    | '/menu'
   id:
     | '__root__'
     | '/'
@@ -97,6 +108,7 @@ export interface FileRouteTypes {
     | '/admin/suppliers'
     | '/admin/supplies'
     | '/admin/'
+    | '/menu/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -106,6 +118,7 @@ export interface RootRouteChildren {
   AdminSuppliersRouteRoute: typeof AdminSuppliersRouteRoute
   AdminSuppliesRouteRoute: typeof AdminSuppliesRouteRoute
   AdminIndexRouteRoute: typeof AdminIndexRouteRoute
+  MenuIndexRouteRoute: typeof MenuIndexRouteRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -115,6 +128,13 @@ declare module '@tanstack/react-router' {
       path: ''
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/menu/': {
+      id: '/menu/'
+      path: '/menu'
+      fullPath: '/menu/'
+      preLoaderRoute: typeof MenuIndexRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/': {
@@ -162,6 +182,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminSuppliersRouteRoute: AdminSuppliersRouteRoute,
   AdminSuppliesRouteRoute: AdminSuppliesRouteRoute,
   AdminIndexRouteRoute: AdminIndexRouteRoute,
+  MenuIndexRouteRoute: MenuIndexRouteRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
